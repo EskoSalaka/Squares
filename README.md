@@ -1,3 +1,3 @@
 # Squares
 
-![Squares](Images/div_3_random_1000x1000.BMP)
+![Squares](Images/div_3_random_1000x1000.BMP=100x200)
