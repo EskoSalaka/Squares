@@ -60,9 +60,45 @@ def is_prime(n):
 We can use it as a painter func in the following way. We only need to use the square number n.
 
 ```
-Primes of the first 1 000 000 numbers as squares.
+white = [255, 255, 255]
+black = [0, 0, 0]
+
+# Primes of the first 1 000 000 numbers as squares.
 s = create_squares('none', 1000, 1000, lambda array, n, h, x, *extras: is_prime(n))
 paint(s, black, white, 'primes_1000x1000.BMP')
 ```
 
  <img src="Images/primes_1000x1000.BMP" height="300" width="300"> 
+ 
+ ### Some more or less interesting stuff
+ 
+ ```
+ # An interesting kind of Sierpinski-triangles: Paint the square if the sum of the number of painted squares of all
+ # the above rows, starting from each row's current column index is even.
+ s = create_squares('ones', 1000, 1000, lambda array, n, h, x, *extras: array[:h, x:].sum() % 2)
+ paint(s, black, white, 'triangles_1000x1000.BMP')
+ ```
+ 
+ <img src="Images\sierpinksi1.BMP" height="300" width="300"> 
+ 
+  ```
+ # Same, but with a random first line
+ s = create_squares('random', 1000, 1000, lambda array, n, h, x, *extras: array[:h, x:].sum() % 2)
+ paint(s, black, white, 'triangles_random_1000x1000.BMP')
+ ```
+ 
+ <img src="Images\triangles_random_1000x1000.BMP" height="300" width="300"> 
+ 
+   ```
+ # Color the square if the three above squares are mirror-symmetric starting with a random first line
+ def mirror_symmetric_3(array, n, h, x, *extras):
+     a = array[h - 1][x - 1]
+     c = array[h - 1][x + 1] if x + 1 < array[h - 1].size else array[h - 1][0]
+     return 1 if (a and c) or (not a and not c) else 0
+ 
+ 
+ s = create_squares('random', 1000, 1000, mirror_symmetric_3)
+ paint(s, black, white, 'mirror_symmetric_3_1000x1000.BMP')
+ ```
+ 
+ <img src="Images\mirror_symmetric_3_1000x1000.BMP" height="300" width="300"> 

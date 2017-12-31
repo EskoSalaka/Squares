@@ -126,5 +126,6 @@ def main():
     # s = create_squares('none', 15, 1000, lambda array, n, h, x, *extras: (extras[0][h] & (1 << x)) >> x, *ulam_num)
     # paint(s, black, white, 'ulam_binaries_15x1000.BMP')
 
-if __name__ == 'main':
+
+if __name__ == '__main__':
     main()
