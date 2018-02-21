@@ -35,7 +35,7 @@ create_squares(first_line, width, height, painter_func, *func_extras, custom_fir
 ```
 
 This function creates an array of 1's and 0's of given width and height where 1's represent painted squares. The squares are
-painted according to a given function 'painter_func'. he structure of the 'painter_func' is described in more detail
+painted according to a given function 'painter_func'. The structure of the 'painter_func' is described in more detail
 later. Basically, each 'square', or element of the array, is iterated and passed to the 'painter_func', which in
 turn either paints the square according to its logic. It is used in the following way:
 squares_iterator[0] = painter_func(squares, n, h, x, func_extras)
@@ -101,4 +101,38 @@ paint(s, black, white, 'primes_1000x1000.BMP')
  paint(s, black, white, 'mirror_symmetric_3_1000x1000.BMP')
  ```
  
- <img src="Images\mirror_symmetric_3_1000x1000.BMP" height="300" width="300"> 
+ <img src="Images\mirror_symmetric_3_1000x1000.BMP" height="300" width="300">
+
+ ```
+    # The binary representation of the first 1000 Ulam numbers
+    # ulam_num = ulam_numbers(1, 2, 1000)
+    # s = create_squares('none', 15, 1000, lambda array, n, h, x, *extras: (extras[0][h] & (1 << x)) >> x, *ulam_num)
+    # paint(s, black, white, 'ulam_binaries_15x1000.BMP')
+ ```
+
+ <img src="Images/ulam_binaries_15x1000.BMP" height="300" width="300">
+
+  ```
+    # Paint the square if the current row and column numbers are coprime
+    # s = create_squares('none', 1000, 1000, lambda array, n, h, x, *extras: math.gcd(h, x) == 1)
+    # paint(s, black, white, 'coprimes_1000x1000.BMP')
+  ```
+
+ <img src="Images/coprimes_1000x1000.BMP" height="300" width="300">
+
+  ```
+    # Paint the square if the current row number, column number and square number are all coprime
+    # s = create_squares('none', 1000, 1000,lambda array, n, h, x, *extras: math.gcd(n, x) == 1 and math.gcd(h, x) == 1 and math.gcd(n, h) == 1)
+    # paint(s, black, white, 'coprimes2_1000x1000.BMP')
+  ```
+
+ <img src="Images/coprimes2_1000x1000.BMP" height="300" width="300">
+
+  ```
+   # Paint the square if these two following are coprime: number of painted squares of
+    # the above rows starting from each row's current column index and ending in it.
+    # s = create_squares('ones', 1000, 1000, lambda array, n, h, x, *extras: math.gcd(array[:h-1, x:].sum(), array[:h-1, :x].sum()) == 1)
+    # paint(s, black, white, 'gcd_ones_1000x1000.BMP')
+  ```
+
+ <img src="Images/gcd_ones_1000x1000.BMP" height="300" width="300">

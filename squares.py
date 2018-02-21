@@ -1,5 +1,6 @@
 import sys
 import numpy
+from numba import jit
 
 from PIL import Image
 
@@ -29,7 +30,6 @@ def to_pixel_array(array, square_color, background_color):
                 pixel_array[y][x] = background_color
 
     return pixel_array
-
 
 def create_squares(first_line, width, height, painter_func, *func_extras, custom_first_line=None, progress=True):
     """

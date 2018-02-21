@@ -6,6 +6,7 @@ from squares import paint, create_squares
 ########################################################################################################################
 # Some handy math functions
 ########################################################################################################################
+
 def is_prime(n):
     if n % 2 == 0 and n > 2:
         return False
@@ -49,15 +50,15 @@ def divisor_sum(n):
 def main():
     white = [255, 255, 255]
     black = [0, 0, 0]
-
-    # Primes of the first 1 000 000 numbers as squares.
+    #
+    # # Primes of the first 1 000 000 numbers as squares.
     # s = create_squares('none', 1000, 1000, lambda array, n, h, x, *extras: is_prime(n))
     # paint(s, black, white, 'primes_1000x1000.BMP')
 
     # An interesting kind of Sierpinski-triangles: Paint the square if the sum of the number of painted squares of all
     # the above rows, starting from each row's current column index is even.
-    # s = create_squares('ones', 1000, 1000, lambda array, n, h, x, *extras: array[:h, x:].sum() % 2)
-    # paint(s, black, white, 'triangles_1000x1000.BMP')
+    # s = create_squares('ones', 1000, 1000, lambda array, n, h, x, *extras: array[:h-1, x:].sum() % 2)
+    # paint(s, black, white, 'gcd_ones_1000x1000.BMP')
 
     # Same, but with a random first line
     # s = create_squares('random', 1000, 1000, lambda array, n, h, x, *extras: array[:h, x:].sum() % 2)
@@ -125,6 +126,20 @@ def main():
     # ulam_num = ulam_numbers(1, 2, 1000)
     # s = create_squares('none', 15, 1000, lambda array, n, h, x, *extras: (extras[0][h] & (1 << x)) >> x, *ulam_num)
     # paint(s, black, white, 'ulam_binaries_15x1000.BMP')
+
+    # Paint the square if the current row and column numbers are coprime
+    # s = create_squares('none', 1000, 1000, lambda array, n, h, x, *extras: math.gcd(h, x) == 1)
+    # paint(s, black, white, 'coprimes_1000x1000.BMP')
+
+    # Paint the square if the current row number, column number and square number are all coprime
+    # s = create_squares('none', 1000, 1000,lambda array, n, h, x, *extras: math.gcd(n, x) == 1 and math.gcd(h, x) == 1 and math.gcd(n, h) == 1)
+    # paint(s, black, white, 'coprimes2_1000x1000.BMP')
+
+    # Paint the square if these two following are coprime: number of painted squares of
+    # the above rows starting from each row's current column index and ending in it.
+    # s = create_squares('ones', 1000, 1000,
+    #                    lambda array, n, h, x, *extras: math.gcd(array[:h-1, x:].sum(), array[:h-1, :x].sum()) == 1)
+    # paint(s, black, white, 'gcd_ones_1000x1000.BMP')
 
 
 if __name__ == '__main__':
