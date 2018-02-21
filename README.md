@@ -103,15 +103,6 @@ paint(s, black, white, 'primes_1000x1000.BMP')
  
  <img src="Images\mirror_symmetric_3_1000x1000.BMP" height="300" width="300">
 
- ```
-    # The binary representation of the first 1000 Ulam numbers
-    # ulam_num = ulam_numbers(1, 2, 1000)
-    # s = create_squares('none', 15, 1000, lambda array, n, h, x, *extras: (extras[0][h] & (1 << x)) >> x, *ulam_num)
-    # paint(s, black, white, 'ulam_binaries_15x1000.BMP')
- ```
-
- <img src="Images/ulam_binaries_15x1000.BMP" height="300" width="300">
-
   ```
     # Paint the square if the current row and column numbers are coprime
     # s = create_squares('none', 1000, 1000, lambda array, n, h, x, *extras: math.gcd(h, x) == 1)
