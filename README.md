@@ -118,7 +118,7 @@ paint(s, black, white, 'primes_1000x1000.BMP')
     # paint(s, black, white, 'coprimes_1000x1000.BMP')
   ```
 
- <img src="Images/coprimes_1000x1000.BMP" height="300" width="300">
+ <img src="Images/coprimes_1000x1000.BMP" height="300" width="50">
 
   ```
     # Paint the square if the current row number, column number and square number are all coprime
