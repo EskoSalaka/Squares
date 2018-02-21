@@ -68,7 +68,7 @@ s = create_squares('none', 1000, 1000, lambda array, n, h, x, *extras: is_prime(
 paint(s, black, white, 'primes_1000x1000.BMP')
 ```
 
- <img src="Images/primes_1000x1000.BMP" height="300" width="300"> 
+ <img src="Images/primes_1000x1000.BMP" height="500" width="500"> 
  
  ### Some more or less interesting stuff
  
@@ -79,7 +79,7 @@ paint(s, black, white, 'primes_1000x1000.BMP')
  paint(s, black, white, 'triangles_1000x1000.BMP')
  ```
  
- <img src="Images\sierpinksi1.BMP" height="300" width="300"> 
+ <img src="Images\sierpinksi1.BMP" height="500" width="500"> 
  
   ```
  # Same, but with a random first line
@@ -87,7 +87,15 @@ paint(s, black, white, 'primes_1000x1000.BMP')
  paint(s, black, white, 'triangles_random_1000x1000.BMP')
  ```
  
- <img src="Images\triangles_random_1000x1000.BMP" height="300" width="300"> 
+ <img src="Images\triangles_random_1000x1000.BMP" height="500" width="500">
+
+ ```
+  # Suprisingly, it's hard to see any pattern if we do the same as above but check for divisibility by 3
+  # s = create_squares('ones', 1000, 1000, lambda array, n, h, x, *extras: 1 if array[:h, x:].sum() % 3 == 0 else 0)
+  # paint(s, black, white, 'div_3_1000x1000.BMP')
+ ```
+
+ <img src="Images/sss_div_3.BMP" height="500" width="500">
  
    ```
  # Color the square if the three above squares are mirror-symmetric starting with a random first line
@@ -101,7 +109,7 @@ paint(s, black, white, 'primes_1000x1000.BMP')
  paint(s, black, white, 'mirror_symmetric_3_1000x1000.BMP')
  ```
  
- <img src="Images\mirror_symmetric_3_1000x1000.BMP" height="300" width="300">
+ <img src="Images\mirror_symmetric_3_1000x1000.BMP" height="500" width="500">
 
  ```
     # The binary representation of the first 1000 Ulam numbers
@@ -110,7 +118,7 @@ paint(s, black, white, 'primes_1000x1000.BMP')
     # paint(s, black, white, 'ulam_binaries_15x1000.BMP')
  ```
 
- <img src="Images/ulam_binaries_15x1000.BMP" height="300" width="50">
+ <img src="Images/ulam_binaries_15x1000.BMP" height="500" width="50">
 
   ```
     # Paint the square if the current row and column numbers are coprime
@@ -118,7 +126,7 @@ paint(s, black, white, 'primes_1000x1000.BMP')
     # paint(s, black, white, 'coprimes_1000x1000.BMP')
   ```
 
- <img src="Images/coprimes_1000x1000.BMP" height="300" width="300">
+ <img src="Images/coprimes_1000x1000.BMP" height="500" width="500">
 
   ```
     # Paint the square if the current row number, column number and square number are all coprime
@@ -126,7 +134,7 @@ paint(s, black, white, 'primes_1000x1000.BMP')
     # paint(s, black, white, 'coprimes2_1000x1000.BMP')
   ```
 
- <img src="Images/coprimes2_1000x1000.BMP" height="300" width="300">
+ <img src="Images/coprimes2_1000x1000.BMP" height="500" width="500">
 
   ```
    # Paint the square if these two following are coprime: number of painted squares of
@@ -135,4 +143,4 @@ paint(s, black, white, 'primes_1000x1000.BMP')
     # paint(s, black, white, 'gcd_ones_1000x1000.BMP')
   ```
 
- <img src="Images/gcd_ones_1000x1000.BMP" height="300" width="300">
+ <img src="Images/gcd_ones_1000x1000.BMP" height="500" width="500">

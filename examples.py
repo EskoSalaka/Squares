@@ -128,8 +128,8 @@ def main():
     # paint(s, black, white, 'ulam_binaries_15x1000.BMP')
 
     # Paint the square if the current row and column numbers are coprime
-    # s = create_squares('none', 1000, 1000, lambda array, n, h, x, *extras: math.gcd(h, x) == 1)
-    # paint(s, black, white, 'coprimes_1000x1000.BMP')
+    s = create_squares('none', 100, 100, lambda array, n, h, x, *extras: math.gcd(n, x*h) == 1)
+    paint(s, black, white, 'coprimes_1000x1000.BMP')
 
     # Paint the square if the current row number, column number and square number are all coprime
     # s = create_squares('none', 1000, 1000,lambda array, n, h, x, *extras: math.gcd(n, x) == 1 and math.gcd(h, x) == 1 and math.gcd(n, h) == 1)
