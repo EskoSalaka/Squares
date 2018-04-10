@@ -175,4 +175,4 @@ paint(s, black, white, 'primes_1000x1000.BMP')
     paint(s, black, white, 'mandelbrot_1500x1000.BMP')
   ```
 
- <img src="Images/mandelbrot_1500x1000.BMP" height="750" width="500">
+ <img src="Images/mandelbrot_1500x1000.BMP" height="500" width="750">
