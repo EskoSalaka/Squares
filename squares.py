@@ -2,7 +2,7 @@ import sys
 import numpy
 from numba import jit
 
-from PIL import Image
+from PIL import Image, ImageFilter
 
 
 def update_progress(n, tot):
@@ -29,7 +29,8 @@ def to_pixel_array(array, square_color, background_color):
             else:
                 pixel_array[y][x] = background_color
 
-    return pixel_array
+    return pixel_array.astype("uint8")
+
 
 def create_squares(first_line, width, height, painter_func, *func_extras, custom_first_line=None, progress=True):
     """
@@ -98,8 +99,8 @@ def create_squares(first_line, width, height, painter_func, *func_extras, custom
 
 def paint(array, square_color, background_color, save_loc='squares.BMP'):
     """Converts the given numpy 2d-array to an image data-array and creates an image from it."""
-    image = Image.fromarray(to_pixel_array(array, square_color, background_color))
-    image.save(save_loc)
+    image = Image.fromarray(to_pixel_array(array, square_color, background_color), mode='RGB')
+    image.save(save_loc, "BMP", quality=95, optimize=True)
     image.show()
 
 

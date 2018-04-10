@@ -153,3 +153,26 @@ paint(s, black, white, 'primes_1000x1000.BMP')
   ```
 
  <img src="Images/gcd_ones_1000x1000.BMP" height="500" width="500">
+
+ ```
+    # Simple Mandelbrot set
+    def mandelbrot(z, max_iterations=1000):
+    c = z
+
+    for _ in range(max_iterations):
+        if abs(z) > 2:
+            return 0
+        else:
+            z = pow(z, 2) + c
+
+    return 1
+
+    def mandelbrot_set(array, n, h, x, *extras):
+        z = complex(-2.0 + 3.0 * x / 1500.0, -1.0 + 2.0 * h / 1000.0)
+        return mandelbrot(z, max_iterations=10000)
+
+    s = create_squares('none', 1500, 1000, mandelbrot_set)
+    paint(s, black, white, 'mandelbrot_1500x1000.BMP')
+  ```
+
+ <img src="Images/mandelbrot_1500x1000.BMP" height="750" width="500">

@@ -1,6 +1,7 @@
 import math
 import numpy
 from squares import paint, create_squares
+# from numba import jit
 
 
 ########################################################################################################################
@@ -43,6 +44,20 @@ def divisor_sum(n):
     sum([i for i in range(1, n) if n % i == 0])
 
 
+# Can be speeded up a lot with numba
+# @jit
+def mandelbrot(z, max_iterations=1000):
+    c = z
+
+    for _ in range(max_iterations):
+        if abs(z) > 2:
+            return 0
+        else:
+            z = pow(z, 2) + c
+
+    return 1
+
+
 ########################################################################################################################
 # Some stuff. Feel free to add your own.
 ########################################################################################################################
@@ -50,7 +65,7 @@ def divisor_sum(n):
 def main():
     white = [255, 255, 255]
     black = [0, 0, 0]
-    #
+
     # # Primes of the first 1 000 000 numbers as squares.
     # s = create_squares('none', 1000, 1000, lambda array, n, h, x, *extras: is_prime(n))
     # paint(s, black, white, 'primes_1000x1000.BMP')
@@ -141,6 +156,14 @@ def main():
     # s = create_squares('ones', 1000, 1000,
     #                    lambda array, n, h, x, *extras: math.gcd(array[:h-1, x:].sum(), array[:h-1, :x].sum()) == 1)
     # paint(s, black, white, 'gcd_ones_1000x1000.BMP')
+
+    # Simple Mandelbrot set. Very slow way.
+    def mandelbrot_set(array, n, h, x, *extras):
+        z = complex(-2.0 + 3.0 * x / 1500.0, -1.0 + 2.0 * h / 1000.0)
+        return mandelbrot(z, max_iterations=10000)
+
+    s = create_squares('none', 1500, 1000, mandelbrot_set)
+    paint(s, black, white, 'mandelbrot_1500x1000.BMP')
 
 
 if __name__ == '__main__':
